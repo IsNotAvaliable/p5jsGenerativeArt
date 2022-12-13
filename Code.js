@@ -4,7 +4,7 @@
 let CANVAS_SIZE = 400;
 let GRID_SQUARES = 10;
 let STEP = CANVAS_SIZE/GRID_SQUARES;
-let NUM_SECTIONS = 13;
+let NUM_SECTIONS = 5;
 
 var COLORS = [[216, 164, 127],[239, 131, 84],[238, 75, 106],[223, 59, 87],[15, 113, 115]]
 
@@ -19,8 +19,7 @@ function setupStandardAxes(showLines){
 
 function redcube(){
     fill(222,95,82)
-  square(240,35,20)
-}
+  square(240,35,20)}
 function redcubes(){
     fill(random(255),random(255),random(255))
   square(random(200,240),random(-150,-120),15)
@@ -62,6 +61,27 @@ function whitecube(){
   square(250,150,20)
 }
 
+function cubesection(rrotat){
+    angleMode(DEGREES);
+        fill (213,90,79)
+  square(250,150,50)
+            fill (0)
+  square(270,80,50)
+          fill (219,224,103)
+  square(260,100,50)
+            fill (0)
+  square(210,100,50)
+              fill (255)
+  square(212.5,102.5,45)
+     rotate(-rrotat)
+  strokeWeight(4);
+              fill (0,0,0,1)
+  square(260,25,50)
+   strokeWeight(1);
+        rotate(rrotat)
+  
+}
+
 function bottomwhitecube(){
   
       fill (255,255,255)
@@ -86,25 +106,24 @@ function drawGridLines(){
 }
 
 function setup() {
-let R =  random(20,40)
+let R =  random(20,30)
   createCanvas(CANVAS_SIZE, CANVAS_SIZE);
-  background(160);
+  background(127,131,141);
   angleMode(DEGREES);
   setupStandardAxes();
 rotate(R)
-              drawGridLines()
   for (var i = 0; i <NUM_SECTIONS; i++){
-     square(200,2*STEP,10)
-         redcubeincube()
-         redcube()
-    greenrectang()
-    greycrube()
-    redcubes()
-        whitecube()
-    bottomwhitecube()
-    straightcrube(R)
-    drawGridLines()
-translate(-720/NUM_SECTIONS, 0);
+    translate(0,-150)
+            cubesection(R)
+        translate(0,150)
+                cubesection(R)
+            translate(0,150)
+                cubesection(R)
+        translate(0,-150)
+                translate(0,300)
+                cubesection(R)
+        translate(0,-300)
+translate(-720/NUM_SECTIONS, -75);
   }
   
   
